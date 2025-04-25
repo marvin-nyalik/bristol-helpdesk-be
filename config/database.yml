@@ -1,0 +1,28 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: help_desk
+  username: postgres
+  password: admin
+  host: localhost
+  port: 5432
+
+test:
+  <<: *default
+  database: helpdesk_test
+  username: postgres
+  password: admin
+  host: localhost
+  port: 5432
+
+production:
+  <<: *default
+  database: helpdesk_production
+  username: postgres
+  password: <%= ENV["BRISTOL_HELPDESK_DATABASE_PASSWORD"] %>
