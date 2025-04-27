@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   },
   defaults: { format: :json }
 
+  get 'users/get_users', to: 'users/users#getUsers', as: :get_users
 
   resources :tickets, param: :id do
     member do
