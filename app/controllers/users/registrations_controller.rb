@@ -19,8 +19,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :password_confirmation,
       :username,
       :fullname,
+      :status,
       :usertype,
       branches: []
+      
     )
   end
 
