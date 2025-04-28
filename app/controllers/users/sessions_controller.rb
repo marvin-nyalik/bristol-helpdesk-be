@@ -6,11 +6,12 @@ class Users::SessionsController < Devise::SessionsController
     def create
       self.resource = warden.authenticate!(auth_options)
       resource.jwt_jti = SecureRandom.uuid
-      resource.save!
+    resource.save!
       sign_in(resource_name, resource)
       render json: {
         message: "Signed in successfully",
-        token: request.env['warden-jwt_auth.token']
+        token: request.env['warden-jwt_auth.token'],
+        user: resource
       }, status: :ok
     end
   
