@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   defaults: { format: :json }
 
   get 'users/get_users', to: 'users/users#getUsers', as: :get_users
+  # get '/departments', to: 'departments#index'
+
+  resources :departments, only: [:index, :show, :create, :update, :destroy]
+
+
 
   resources :tickets, param: :id do
     member do
@@ -14,6 +19,15 @@ Rails.application.routes.draw do
       patch :assign
     end
   end
+
+
+  # Rails.application.routes.draw do
+  #   resources :departments
+  # end
+
+  
+  
+  
 
   resources :notifications, only: [:index] do
     member do
